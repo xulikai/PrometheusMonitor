@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_caffeine"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_common"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_dropwizard"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_graphite_bridge"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_guava"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_hibernate"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_hotspot"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_httpserver"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_jetty"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_jetty_jdk8"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_log4j"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_log4j2"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_logback"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_pushgateway"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_servlet"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_spring_boot"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_spring_web"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/simpleclient_vertx"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
