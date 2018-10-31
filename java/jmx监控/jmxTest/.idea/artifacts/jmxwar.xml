@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="jmxwar">
+    <output-path>$PROJECT_DIR$/out/artifacts/jmxwar</output-path>
+    <root id="archive" name="jmxwar.war">
+      <element id="javaee-facet-resources" facet="jmxTest/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="jmxTest" />
+        </element>
+      </element>
+      <element id="dir-copy" path="$PROJECT_DIR$/web/WEB-INF" />
+    </root>
+  </artifact>
+</component>

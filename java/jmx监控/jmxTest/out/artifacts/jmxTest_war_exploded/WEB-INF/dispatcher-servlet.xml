@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+       <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+       <!--xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"-->
+       <!--xmlns:mvc="http://www.springframework.org/schema/mvc"-->
+       <!--xmlns:context="http://www.springframework.org/schema/context">-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+
+    <context:component-scan base-package="test.jmx" />
+    <context:component-scan base-package="test.controller" />
+    <!--<context:component-scan base-package="ansibleEx.AnsibleMiddleware.service" />-->
+    <context:mbean-export />
+
+
+    <!-- 默认使用基于注释的适配器和映射器 -->
+    <mvc:annotation-driven/>
+    <!-- 只把动态信息当做controller处理，忽略静态信息 -->
+    <mvc:default-servlet-handler/>
+    <!-- 自动扫描包中的Controlller -->
+    <context:component-scan base-package="test.*"/>
+    <!--<context:component-scan base-package="test.jmx"/>-->
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+        <property name="prefix" value="/WEB-INF/jsp/"/><!-- 前缀 -->
+        <property name="suffix" value=".jsp"/><!-- 后缀，自动拼接 -->
+    </bean>
+
+</beans>
