@@ -2,7 +2,7 @@
 from PrometheusDao import write_file, get_rules, get_detail, update_write_file, delete_file
 
 
-redis_fixed_text = """#{'name': '{{ name }}', 'alert': '{{ alert }}', 'expr': '{{ expr }}', '_for': '{{ for }}', 'level': '{{ level }}', 'summary': '{{ summary }}', 'description': '{{ description }}'}
+redis_fixed_text = """#{'name': '{{ name }}', 'service': '{{ service }}', 'alert': '{{ alert }}', 'expr': '{{ expr }}', '_for': '{{ for }}', 'level': '{{ level }}', 'summary': '{{ summary }}', 'description': '{{ description }}'}
 groups:
 - name: {{ name }}
   rules:
@@ -11,14 +11,14 @@ groups:
     for: {{ for }}
     labels:
       level: "{{ level }}"
-      service: "local-234"
+      service: "{{ service }}"
     annotations:
       summary: "{{ summary }}"
       description: "{{ description }}"
 """
 
 
-def create_rules_model(name, expr, level, _for, desc, model):
+def create_rules_model(name, expr, level, _for, desc, model, service):
     try:
         rule = redis_fixed_text.replace('{{ name }}', name + '_rule')
         rule = rule.replace('{{ alert }}', name)
@@ -27,6 +27,7 @@ def create_rules_model(name, expr, level, _for, desc, model):
         rule = rule.replace('{{ level }}', level)
         rule = rule.replace('{{ summary }}', model)
         rule = rule.replace('{{ description }}', desc)
+        rule = rule.replace('{{ service }}', service)
         rs = write_file(name, rule)
         return rs
     except Exception, e:
@@ -34,7 +35,7 @@ def create_rules_model(name, expr, level, _for, desc, model):
         return 1
 
 
-def update_rules_model(name, expr, level, _for, desc, model, _name):
+def update_rules_model(name, expr, level, _for, desc, model, _name, service):
     try:
         rule = redis_fixed_text.replace('{{ name }}', name + '_rule')
         rule = rule.replace('{{ alert }}', name)
@@ -43,6 +44,7 @@ def update_rules_model(name, expr, level, _for, desc, model, _name):
         rule = rule.replace('{{ level }}', level)
         rule = rule.replace('{{ summary }}', model)
         rule = rule.replace('{{ description }}', desc)
+        rule = rule.replace('{{ service }}', service)
         rs = update_write_file(name, rule, _name)
         return rs
     except Exception, e:

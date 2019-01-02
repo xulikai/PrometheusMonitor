@@ -31,7 +31,7 @@
         <div style="height: 30px; width: 100%; position: absolute; top: 155px">
             <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">表达式:</label>
             <!--style="appearance:none; -moz-appearance:none; -webkit-appearance:none; width: 60%; height: 35px; position: absolute; left: 82px; font-size: 15px; background-color: white; border: 1px solid gainsboro; color: grey "-->
-            <select id="rules_select_item" class="chosen-select" style="width: 60.5%; height: 30px; position: absolute; left: 82px">
+            <select id="rules_select_item" class="chosen-select" style="width: 61%; height: 30px; position: absolute; left: 82px">
                 <option selected style="text-align: center" value="">&nbsp;&nbsp;监控项列表</option>
                 <option style="text-align: center" value="rtpproxy可用个数">rtpproxy可用个数</option>
                 <option style="text-align: center" value="b_test">b_test</option>
@@ -39,39 +39,42 @@
                 <option style="text-align: center" value="calls数">calls数</option>
             </select>
         </div>
-        <textarea id="rules_expr" style=" width: 60%; height: 150px; position: absolute; left: 82px;  top: 190px"></textarea>
+        <textarea id="rules_expr" style=" width: 60%; height: 80px; position: absolute; left: 82px;  top: 190px"></textarea>
 
-        <div style="height: 30px; width: 100%; position: absolute; top: 358px">
+        <div style="height: 30px; width: 100%; position: absolute; top: 290px">
+            <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">组名:</label>
+            <!--style="appearance:none; -moz-appearance:none; -webkit-appearance:none; width: 60%; height: 35px; position: absolute; left: 82px; font-size: 15px; background-color: white; border: 1px solid gainsboro; color: grey "-->
+            <select id="service_select"  class="chosen-select" style="width: 208px; height: 30px; position: absolute; left: 82px;">
+                <option selected style="text-align: center" value=""> &nbsp;&nbsp;选择告警组</option>
+            </select>
+        </div>
+
+        <div style="height: 30px; width: 100%; position: absolute; top: 338px">
             <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">持续:</label>
             <input id="rules_time" type="text" placeholder="    设置持续时间...." class="form-control" style=" width: 200px; height: 30px; font-size: 15px; position: absolute; left: 82px">
         </div>
 
-        <div style="height: 30px; width: 100%; position: absolute; top: 410px">
+        <div style="height: 30px; width: 100%; position: absolute; top: 390px">
             <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">级别:</label>
             <!--style="appearance:none; -moz-appearance:none; -webkit-appearance:none; width: 60%; height: 35px; position: absolute; left: 82px; font-size: 15px; background-color: white; border: 1px solid gainsboro; color: grey "-->
             <select id="rules_select"  class="chosen-select" style="width: 208px; height: 30px; position: absolute; left: 82px;">
                 <option selected style="text-align: center" value=""> &nbsp;&nbsp;选择故障等级</option>
-                <option style="text-align: center" value="information">Information</option>
-                <option style="text-align: center" value="warning">Warning</option>
-                <option style="text-align: center" value="average">Average</option>
-                <option style="text-align: center" value="high">High</option>
-                <option style="text-align: center" value="disaster">Disaster</option>
             </select>
         </div>
 
-        <div style="height: 30px; width: 100%; position: absolute; top: 460px">
+        <div style="height: 30px; width: 100%; position: absolute; top: 440px">
             <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">模板:</label>
             <input id="rules_model" type="text" disabled="disabled" class="form-control" value='告警主机和端口{{ $labels.instance }} 告警值：{{ $value }}' style="color: grey ; width: 60%; height: 30px; font-size: 15px; position: absolute; left: 82px">
         </div>
 
-        <div style="height: 30px; width: 100%; position: absolute; top: 510px">
+        <div style="height: 30px; width: 100%; position: absolute; top: 490px">
             <label style="width: 50px; font-size: 15px; background-color: #0a6aa1; color: white">描述:</label>
             <input id="rules_desc" type="text" placeholder="    设置告警描述...." class="form-control" style="color: grey ; width: 60%; height: 30px; font-size: 15px; position: absolute; left: 82px">
         </div>
 
-        <div style="height: 30px ; position: absolute; top: 560px; width: 100%;">
-            <label style="width: 60%; height: 26px;background-color: lightcoral; text-align: center"><a href="javascript:update()" style="text-decoration: none ; color: white" >修改</a></label>
-            <label style="width: 40px; height: 26px; background-color: lightcoral"></label>
+        <div style="height: 30px ; position: absolute; top: 540px; width: 100%;">
+            <label style="width: 60%; height: 26px;background-color: #0a6aa1; text-align: center"><a href="javascript:update()" style="text-decoration: none ; color: white" >修改</a></label>
+            <label style="width: 40px; height: 26px; background-color: #0a6aa1"></label>
             <!--coral-->
         </div>
 
@@ -88,7 +91,7 @@
             <div id="time_rules" style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;for:</div>
             <div style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;labels:</div>
             <div id="select_rules" style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level:</div>
-            <div style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service: "local-234"</div>
+            <div id="select_services" style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service:</div>
             <div style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;annotations:</div>
             <div style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;summary: "告警主机和端口{{ $labels.instance }} 告警值：{{ $value }}"</div>
             <div id="desc_rules" style="margin-left: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description:</div>
@@ -118,6 +121,8 @@
         });
 
     </script>
+
+    <script src="../initInfo.js"></script>
 
     <!-- Chosen -->
     <script src="../js/plugins/chosen/chosen.jquery.js"></script>

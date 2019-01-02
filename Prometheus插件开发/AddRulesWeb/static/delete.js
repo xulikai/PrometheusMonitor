@@ -27,8 +27,12 @@ $("#list_select_rules").change(function(){
             $("#rules_time").val(result._for);
 
 
-            $("#desc_rules").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level: " + result.description);
+            $("#desc_rules").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;description: " + result.description);
             $("#rules_desc").val(result.description);
+
+            $("#select_services").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service: " + result.service);
+            var se = $('#service_select').val(result.service);
+            se.attr('selected',true);
 
             $("#select_rules").html("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;level: " + result.level);
             var add = $('#rules_select').val(result.level);

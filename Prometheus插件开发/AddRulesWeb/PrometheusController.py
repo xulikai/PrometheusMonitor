@@ -3,7 +3,7 @@ from flask import Flask, request, render_template, make_response, Response
 import sys
 import json
 from PrometheusService import create_rules_model, get_rule, get_rule_detail, update_rules_model, delete_rules_model
-
+import PrometheusConfig
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 @app.route('/prometheus/add', methods=['POST'])
 def add():
-    content = json.dumps('ok')
+    content = json.dumps('创建成功')
     try:
         name = request.form['name']
         expr = request.form['expr']
@@ -22,7 +22,10 @@ def add():
         _for = request.form['_for']
         desc = request.form['desc']
         model = request.form['model']
-        create_rules_model(name, expr, level, _for, desc, model)
+        service = request.form['service']
+        rs = create_rules_model(name, expr, level, _for, desc, model, service)
+        if rs == 1:
+            return json.dumps('error! please check the path is exist and Permission!')
     except Exception, e:
         print e
         content = json.dumps('error')
@@ -33,7 +36,7 @@ def add():
 
 @app.route('/prometheus/update', methods=['POST'])
 def update():
-    content = json.dumps('ok')
+    content = json.dumps('修改成功')
     try:
         _name = request.form['_name']
         name = request.form['name']
@@ -42,10 +45,13 @@ def update():
         _for = request.form['_for']
         desc = request.form['desc']
         model = request.form['model']
-        update_rules_model(name, expr, level, _for, desc, model, _name)
+        service = request.form['service']
+        rs = update_rules_model(name, expr, level, _for, desc, model, _name, service)
+        if rs == 1:
+            return json.dumps('error! please check the path is exist and Permission!')
     except Exception, e:
         print e
-        content = json.dumps('error')
+        content = json.dumps('error!')
 
     resp = Response(content)
     return resp
@@ -53,17 +59,15 @@ def update():
 
 @app.route('/prometheus/delete', methods=['POST'])
 def delete():
-    content = json.dumps('ok')
+    content = json.dumps('删除成功')
     try:
         _name = request.form['_name']
         delete_rules_model(_name)
     except Exception, e:
         print e
-        content = json.dumps('error')
-
+        content = json.dumps('error! please check the path is exist and Permission!')
     resp = Response(content)
     return resp
-
 
 
 @app.route('/prometheus/getRulesList', methods=['POST'])
@@ -101,6 +105,16 @@ def update_html():
     # return render_template('rulesWeb.html')
     return app.send_static_file('pages/update.html')
 
+
+@app.route('/prometheus/GetInfo', methods=['POST'])
+def get_info():
+    result = {}
+    try:
+        result['servers'] = PrometheusConfig.services
+        result['alerm'] = PrometheusConfig.alarms
+    except Exception, e:
+        print e
+    return json.dumps(result)
 
 if __name__ == '__main__':
     app.run("0.0.0.0", 8888)

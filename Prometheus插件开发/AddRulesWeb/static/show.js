@@ -99,8 +99,9 @@ $(document).ready(function(){
         var level = $("#rules_select").val().trim();
         var desc = $("#rules_desc").val().trim();
         var model = $("#rules_model").val().trim();
+        var server = $("#service_select").val().trim();
 
-        if(name == "" || expr == "" || _for == "" || level == "" || desc == ""){
+        if(name == "" || expr == "" || _for == "" || level == "" || desc == "" || server ==""){
             alert("参数不能为空,请补全参数");
             return;
         }
@@ -116,7 +117,8 @@ $(document).ready(function(){
                 "_for": _for,
                 "level": level,
                 "desc": desc,
-                "model": model
+                "model": model,
+                "service": server
             },
             async: false,
             error: function () {
