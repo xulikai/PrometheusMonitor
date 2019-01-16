@@ -85,6 +85,13 @@ $(document).ready(function(){
     });
 
 
+    $("#service_select").change(function(){
+        var content=$("#service_select").val();
+        content = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;service: " + content;
+        $("#select_services").html(content);
+    });
+
+
     $("#rules_select_item").change(function(){
         var content=$("#rules_select_item").val();
         content = $("#rules_expr").val() + content;
