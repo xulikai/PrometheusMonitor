@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    
+    <common>
+        <!-- 每次从数据库中取数据量 -->
+        <fetchCount>30</fetchCount>
+        <!-- 每次从n内存中取数据量 -->
+        <sendCount>1</sendCount>
+        <!-- 抓取线程数 -->
+        <fetchthreads>2</fetchthreads>
+        <!-- 发送线程数 -->
+        <sendthreads>2</sendthreads>
+        <!-- 内存队列最大数 -->
+        <fetchLimt>200</fetchLimt>
+
+        <!-- 线程池维护线程的最少数量 -->
+        <corePoolSize>5</corePoolSize>
+        <!-- 线程池维护线程的最大数量 -->
+        <maximumPoolSize>10</maximumPoolSize>
+        <!-- 线程池维护线程所允许的空闲时间，单位分钟 -->
+        <keepAliveTime>3</keepAliveTime>
+
+    </common>
+    
+</config>
